@@ -4,7 +4,7 @@ let firstNum = null;
 let secondNum = null;
 let operator = null;
 let toDisplay = null;
-let result = null;
+let result = null
 
 
 function add(num1, num2){
@@ -23,7 +23,10 @@ function divide(num1, num2){
     return num1 / num2;
 }
 
-function operate(x, y, op){
+function operate(num1, num2, op){
+
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
 
     switch(op){
         case '+': return add(num1, num2); break;
