@@ -90,6 +90,8 @@ function getOperator(){
         if (event.target == event.currentTarget) return
         let clickedOperator = event.target.id;
 
+  
+
         switch(clickedOperator){
             case 'plus':
                 operator = '+';
@@ -103,11 +105,15 @@ function getOperator(){
             case 'divide':
                 operator = '/';
                 break;
-            case 'clear':
-                break;
             case 'equals':
                 result = operate(firstNum,secondNum,operator);
-                toDisplay = result
+                toDisplay = result;
+                firstNum = result;
+                secondNum = 0;
+                break;
+            case 'clear':
+                
+                break;
         }
 
         if(event.target.id != 'equals') toDisplay+= operator;  
