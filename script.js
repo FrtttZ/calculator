@@ -36,14 +36,15 @@ function getNum(){
     numbers.addEventListener('click', (event) => {
 
 
-        if (event.target == event.currentTarget) {
-            return}
+        if (event.target == event.currentTarget) return
         
-
-        firstNum = event.target.id
+        if(!firstNum){
+            firstNum = event.target.id;
+        }
+        else if(firstNum){
+            firstNum += event.target.id;
+        }
         display.placeholder = firstNum;
-    
-
     })
 }
 
