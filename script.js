@@ -29,7 +29,7 @@ function operate(num1, num2, op){
 
     num1 = parseInt(num1);
     num2 = parseInt(num2);
-
+    
     switch(op){
         case '+': return add(num1, num2); break;
         case '-': return subtract(num1, num2); break;
@@ -41,28 +41,30 @@ function operate(num1, num2, op){
   
 }
 
-function getNum(inputDisplay=firstNumDisplay){
+function getNum(inputDisplay=firstNumDisplay, numVariable=firstNum){
     let numbers = document.querySelector('#number');
     numbers.addEventListener('click', (event) => {
-
+        let clickedNumber = event.target.id;
         if (event.target == event.currentTarget) return
-
-                    
-        if(!firstNum){
-            firstNum = event.target.id;
+        if (operator) {
+            inputDisplay = secondNumDisplay;
+            numVariable = secondNum;
         }
-        else if(firstNum){
-            firstNum += event.target.id;
+                    
+        if(!numVariable){
+            numVariable = clickedNumber;
+        }
+        else if(numVariable){
+            numVariable += clickedNumber;
 
         }
 
         if (!toDisplay) {
-            toDisplay = event.target.id
+            toDisplay = clickedNumber;
         }else{
-            toDisplay += event.target.id;
+            toDisplay += clickedNumber;
         }
-
-        console.log(firstNum);
+        console.log(numVariable);
         
         inputDisplay.placeholder = toDisplay;
     
@@ -70,52 +72,54 @@ function getNum(inputDisplay=firstNumDisplay){
 
 }
 
-// function getOperator(){
-//     let operatorArea = document.querySelector('#operators');
+function getOperator(){
+    let operatorArea = document.querySelector('#operators');
 
-//     operatorArea.addEventListener('click', (event) => {
-//         if (event.target == event.currentTarget) return
-//         let clickedOperator = event.target.id;
+    operatorArea.addEventListener('click', (event) => {
+        if (event.target == event.currentTarget) return
+        let clickedOperator = event.target.id;
         
-//         switch(clickedOperator){
-//             case 'plus':
-//                 operator = '+';
-//                 break;
-//             case 'minus':
-//                 operator = '-';
-//                 break;
-//             case 'multiply':
-//                 operator = '*';
-//                 break;
-//             case 'divide':
-//                 operator = '/';
-//                 break;
-//             case 'equals':
-//                 result = operate(firstNum,secondNum,operator);
-//                 toDisplay = result;
-//                 break;
-//             case 'clear':
-//                 console.log('work');
-//                 firstNum = null;
-//                 secondNum = null;
-//                 operator = null;
-//                 toDisplay = '';
+        switch(clickedOperator){
+            case 'plus':
+                operator = '+';
+                break;
+            case 'minus':
+                operator = '-';
+                break;
+            case 'multiply':
+                operator = '*';
+                break;
+            case 'divide':
+                operator = '/';
+                break;
+            case 'equals':
+                result = operate(firstNum,secondNum,operator);
+                console.log(firstNum);
+                
+                secondNum = result
+                console.log(result);
+                
+                break;
+            case 'clear':
+                console.log('work');
+                firstNum = null;
+                secondNum = null;
+                operator = null;
+                toDisplay = '';
 
-//                 break;
-//         }
-
-//         if(clickedOperator != 'equals' && clickedOperator != 'clear') toDisplay+= operator;   
-      
-//         display.placeholder = toDisplay;
-//     })
-// }
+                break;
+        }
+        toDisplay = '';
+        operatorDisplay.placeholder = operator;
+    })
+}
 //operator function: what should it include?
 //operator that change the variable and add it to the screen;
 //if = is clicked use the function needed
 
 
 //run calcu
-// getOperator();
+getOperator();
 getNum();
 
 
