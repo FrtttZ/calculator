@@ -46,9 +46,8 @@ function getNum(){
     numbers.addEventListener('click', (event) => {
     let numberClicked = event.target.id;
     if (event.target == event.currentTarget) return
-    if (result && !operator){
-        result = '';
-        secondNum = '';
+    if (!operator){
+
         firstNum = '';  
     }
 
@@ -107,11 +106,10 @@ function getOperator(){
             toDisplay = Math.round(result * 100) / 100
             firstNum = result;
             firstNumDisplay.placeholder = toDisplay;
-
+            
             resetAfterCalculation();
 
         }
-        
         
         switch(clickedOperator){
             case 'plus':
