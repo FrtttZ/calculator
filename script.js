@@ -35,7 +35,7 @@ function operate(num1, num2, op){
         case '-': return subtract(num1, num2); break;
         case '*': return multiply(num1, num2); break;
         case '/': return divide(num1, num2); break;
-        default: return 'NO';
+        default: return op;
     }
 
   
@@ -49,7 +49,7 @@ function getNum(){
     if (result && !operator){
         result = '';
         secondNum = '';
-        firstNum = '';
+        firstNum = '';  
     }
 
 
@@ -84,6 +84,14 @@ function getNum(){
     })
 
 }
+function resetAfterCalculation(){
+    secondNum = '';
+    operator = '';
+    toDisplay = '';
+    result = ''
+    operatorDisplay.placeholder = operator;
+    secondNumDisplay.placeholder = secondNum;
+}
 
 function getOperator(){
     let operatorArea = document.querySelector('#operators');
@@ -91,7 +99,18 @@ function getOperator(){
     operatorArea.addEventListener('click', (event) => {
         if (event.target == event.currentTarget) return
         let clickedOperator = event.target.id;
+  
 
+
+        if((operator && secondNum ) || clickedOperator == 'equals'){
+            result = operate(firstNum,secondNum,operator);
+            toDisplay = Math.round(result * 100) / 100
+            firstNum = result;
+            firstNumDisplay.placeholder = result
+
+            resetAfterCalculation();
+
+        }
         
         
         switch(clickedOperator){
@@ -107,20 +126,20 @@ function getOperator(){
             case 'divide':
                 operator = '/';
                 break;
-            case 'equals':
-                result = operate(firstNum,secondNum,operator);
-                firstNum = result;
+            // case 'equals':
+            //     result = operate(firstNum,secondNum,operator);
+            //     firstNum = result;
   
             
-                secondNum = '';
+            //     secondNum = '';
                 
-                operator = '';
+            //     operator = '';
 
-                firstNumDisplay.placeholder = firstNum;
-                secondNumDisplay.placeholder = secondNum;
+            //     firstNumDisplay.placeholder = firstNum;
+            //     secondNumDisplay.placeholder = secondNum;
 
                 
-                break;
+            //     break;
             case 'clear':
                 console.log('work');
                 firstNum = null;
