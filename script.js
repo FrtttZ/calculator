@@ -33,7 +33,7 @@ function operate(num1, num2, op){
         case '-': return subtract(num1, num2); break;
         case '*': return multiply(num1, num2); break;
         case '/': return divide(num1, num2); break;
-        default: return 'NO';
+        default: console.log(op);
     }
 
   
@@ -89,6 +89,15 @@ function getOperator(){
     operatorArea.addEventListener('click', (event) => {
         if (event.target == event.currentTarget) return
         let clickedOperator = event.target.id;
+
+        if(operator || clickedOperator == 'equals'){
+            result = operate(firstNum,secondNum,operator);
+            toDisplay = result;
+            firstNum = result;
+            secondNum = 0;
+            operator ='';   
+        
+        }
         switch(clickedOperator){
             case 'plus':
                 operator = '+';
@@ -101,13 +110,6 @@ function getOperator(){
                 break;
             case 'divide':
                 operator = '/';
-                break;
-            case 'equals':
-                result = operate(firstNum,secondNum,operator);
-                toDisplay = result;
-                firstNum = result;
-                secondNum = 0;
-                operator ='';
                 break;
             case 'clear':
                 toDisplay = '';
