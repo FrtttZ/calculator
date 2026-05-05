@@ -98,7 +98,7 @@ function getOperator(){
         let clickedOperator = event.target.id;
   
 
-
+        if(clickedOperator == 'equals' && (!firstNum || !secondNum)) return
         if((operator && secondNum ) || clickedOperator == 'equals'){
             result = operate(firstNum,secondNum,operator);
             toDisplay = Math.round(result * 100) / 100
@@ -159,7 +159,6 @@ function getOperator(){
 //operator that change the variable and add it to the screen;
 //if = is clicked use the function needed
 
-getNum();//run calcu
 getOperator();
 getNum();
 
