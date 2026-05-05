@@ -81,7 +81,8 @@ function getNum(){
     })
 
 }
-function resetAfterCalculation(){
+function resetAfterCalculation(resetFirstNum=false){
+    if (resetFirstNum) firstNum = '';
     secondNum = '';
     operator = '';
     toDisplay = '';
@@ -122,30 +123,10 @@ function getOperator(){
             case 'divide':
                 operator = '/';
                 break;
-            // case 'equals':
-            //     result = operate(firstNum,secondNum,operator);
-            //     firstNum = result;
-  
-            
-            //     secondNum = '';
-                
-            //     operator = '';
-
-            //     firstNumDisplay.placeholder = firstNum;
-            //     secondNumDisplay.placeholder = secondNum;
-
-                
-            //     break;
             case 'clear':
-                toDisplay = '';
-                firstNum = 0;
-                secondNum = 0;
-                operator = ''
-                console.log('work');
-                firstNum = null;
-                secondNum = null;
-                operator = null;
-                toDisplay = '';
+                resetAfterCalculation(true);
+                firstNumDisplay.placeholder ='';
+                secondNumDisplay.placeholder = '';
 
                 break;
         }
