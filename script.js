@@ -106,7 +106,7 @@ function getOperator(){
             result = operate(firstNum,secondNum,operator);
             toDisplay = Math.round(result * 100) / 100
             firstNum = result;
-            firstNumDisplay.placeholder = result
+            firstNumDisplay.placeholder = toDisplay;
 
             resetAfterCalculation();
 
