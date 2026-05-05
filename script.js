@@ -1,3 +1,9 @@
+let firstNum = null;
+let secondNum = null;
+let operator = null;
+
+let display = document.querySelector('#display');
+
 function add(num1, num2){
     return num1 + num2;
 }   
@@ -14,9 +20,6 @@ function divide(num1, num2){
     return num1 / num2;
 }
 
-//createe function
-//take numbers and operators
-//call function depends on the operator
 function operate(num1, num2, operate){
     switch(operate){
         case '+': return add(num1, num2);
@@ -26,7 +29,21 @@ function operate(num1, num2, operate){
     }
 }
 
+function getNum(){
+    let numbers = document.querySelector('#number');
 
-let firstNum = null;
-let secondNum = null;
-let operator = null;
+
+    numbers.addEventListener('click', (event) => {
+
+        if(event.target !== event.currentTarget){
+            firstNum = event.target.id
+            display.placeholder = firstNum;
+        }
+
+    })
+}
+
+
+
+getNum();
+
