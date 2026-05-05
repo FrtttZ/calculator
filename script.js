@@ -1,9 +1,9 @@
 const display = document.querySelector('#display');
 
-let firstNum = null;
-let secondNum = null;
-let operator = null;
-let toDisplay = null;
+let firstNum = '';
+let secondNum = '';
+let operator = '';
+let toDisplay = '';
 let result = null
 
 
@@ -35,8 +35,6 @@ function operate(num1, num2, op){
         case '/': return divide(num1, num2); break;
         default: console.log(op);
     }
-
-  
 }
 
 function getNum(){
@@ -44,8 +42,7 @@ function getNum(){
 
 
     numbers.addEventListener('click', (event) => {
-
-
+        let numberClicked = event.target.id;
         if (event.target == event.currentTarget) return
 
 
@@ -81,23 +78,22 @@ function getNum(){
     // display.placeholder = toDisplay
 }
 
-//add number to the second variable if there are still no operator
-
 function getOperator(){
     let operatorArea = document.querySelector('#operators');
 
     operatorArea.addEventListener('click', (event) => {
         if (event.target == event.currentTarget) return
         let clickedOperator = event.target.id;
-
-        if(operator || clickedOperator == 'equals'){
+  
+        if(operator  || clickedOperator == 'equals'){
             result = operate(firstNum,secondNum,operator);
-            toDisplay = result;
+            toDisplay = Math.round(result * 100) / 100
             firstNum = result;
             secondNum = 0;
             operator ='';   
         
         }
+        
         switch(clickedOperator){
             case 'plus':
                 operator = '+';
@@ -119,16 +115,17 @@ function getOperator(){
                 break;
         }
 
-        if(event.target.id != 'equals') toDisplay+= operator;  
+        if(event.target.id != 'equals') toDisplay += operator;  
         display.placeholder = toDisplay;
+        
     })
+
 }
 //operator function: what should it include?
 //operator that change the variable and add it to the screen;
 //if = is clicked use the function needed
 
-
-
-getOperator();
 getNum();
+getOperator();
+
 
