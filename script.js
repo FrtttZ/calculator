@@ -41,32 +41,39 @@ function operate(num1, num2, op){
   
 }
 
-function getNum(inputDisplay=firstNumDisplay, numVariable=firstNum){
+function getNum(){
     let numbers = document.querySelector('#number');
     numbers.addEventListener('click', (event) => {
-        let clickedNumber = event.target.id;
-        if (event.target == event.currentTarget) return
-        if (operator) {
-            inputDisplay = secondNumDisplay;
-            numVariable = secondNum;
-        }
-                    
-        if(!numVariable){
-            numVariable = clickedNumber;
-        }
-        else if(numVariable){
-            numVariable += clickedNumber;
+      
+    if (event.target == event.currentTarget) return
 
+    if (!toDisplay) {
+        toDisplay = event.target.id
+    }else{
+        toDisplay += event.target.id;
+    }
+
+    if (!operator){
+                
+        if(!firstNum){
+            firstNum = event.target.id;
+        }
+        else if(firstNum){
+            firstNum += event.target.id;
         }
 
-        if (!toDisplay) {
-            toDisplay = clickedNumber;
-        }else{
-            toDisplay += clickedNumber;
+        firstNumDisplay.placeholder = toDisplay;
+    }else{
+        if(!secondNum){
+            secondNum = event.target.id;
         }
-        console.log(numVariable);
-        
-        inputDisplay.placeholder = toDisplay;
+        else if(secondNum){
+            secondNum += event.target.id;
+        }
+        secondNumDisplay.placeholder = toDisplay;
+
+    }
+    
     
     })
 
@@ -94,10 +101,16 @@ function getOperator(){
                 break;
             case 'equals':
                 result = operate(firstNum,secondNum,operator);
-                console.log(firstNum);
+                firstNum = result;
+  
+            
+                secondNum = '';
                 
-                secondNum = result
-                console.log(result);
+                operator = '';
+
+                firstNumDisplay.placeholder = firstNum;
+                secondNumDisplay.placeholder = secondNum;
+
                 
                 break;
             case 'clear':
@@ -111,6 +124,7 @@ function getOperator(){
         }
         toDisplay = '';
         operatorDisplay.placeholder = operator;
+
     })
 }
 //operator function: what should it include?
@@ -121,6 +135,11 @@ function getOperator(){
 //run calcu
 getOperator();
 getNum();
+
+
+// function runCalcultor(){
+    
+// }
 
 
 
