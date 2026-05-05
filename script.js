@@ -27,8 +27,8 @@ function divide(num1, num2){
 
 function operate(num1, num2, op){
 
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
     
     switch(op){
         case '+': return add(num1, num2); break;
@@ -136,22 +136,6 @@ function getOperator(){
     })
 
 }
-//operator function: what should it include?
-//operator that change the variable and add it to the screen;
-//if = is clicked use the function needed
 
 getOperator();
 getNum();
-
-
-// function runCalcultor(){
-    
-// }
-
-
-
-
-
-//initially run in first display
-//if operator is selected
-//pass seonc display as argument.
