@@ -49,25 +49,25 @@ function getNum(){
         if (!operator){
                     
             if(!firstNum){
-                firstNum = event.target.id;
+                firstNum = numberClicked;
             }
             else if(firstNum){
-                firstNum += event.target.id;
+                firstNum += numberClicked;
             }
         }else{
             if(!secondNum){
-                secondNum = event.target.id;
+                secondNum = numberClicked;
             }
             else if(secondNum){
-                secondNum += event.target.id;
+                secondNum += numberClicked;
             }
 
         }
 
         if (!toDisplay) {
-            toDisplay = event.target.id
+            toDisplay = numberClicked;
         }else{
-            toDisplay += event.target.id;
+            toDisplay += numberClicked;
         }
 
         display.placeholder = toDisplay;
@@ -115,7 +115,7 @@ function getOperator(){
                 break;
         }
 
-        if(event.target.id != 'equals') toDisplay += operator;  
+        if(clickedOperator != 'equals') toDisplay += operator;  
         display.placeholder = toDisplay;
         
     })
