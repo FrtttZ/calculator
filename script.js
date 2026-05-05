@@ -4,7 +4,7 @@ let firstNum = null;
 let secondNum = null;
 let operator = null;
 let toDisplay = null;
-
+let result = null;
 
 
 function add(num1, num2){
@@ -24,12 +24,6 @@ function divide(num1, num2){
 }
 
 function operate(x, y, op){
-
-    num1 = parseInt(x);
-    num2 = parseInt(y)
-    console.log('firstNum: ' + num1);
-    console.log(op);
-    console.log(num2);
 
     switch(op){
         case '+': return add(num1, num2); break;
@@ -109,8 +103,8 @@ function getOperator(){
             case 'clear':
                 break;
             case 'equals':
-                toDisplay = operate(firstNum,secondNum,operator);
-                console.log(toDisplay);
+                result = operate(firstNum,secondNum,operator);
+                toDisplay = result
         }
 
         if(event.target.id != 'equals') toDisplay+= operator;  
