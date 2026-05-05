@@ -1,9 +1,11 @@
-const display = document.querySelector('#display');
+let firstNumDisplay = document.querySelector('#firstNum');
+const operatorDisplay = document.querySelector('#operator');
+const secondNumDisplay = document.querySelector('#secondNum');
 
 let firstNum = null;
 let secondNum = null;
 let operator = null;
-let toDisplay = null;
+let toDisplay = '';
 let result = null
 
 
@@ -39,31 +41,18 @@ function operate(num1, num2, op){
   
 }
 
-function getNum(){
+function getNum(inputDisplay=firstNumDisplay){
     let numbers = document.querySelector('#number');
-
-
     numbers.addEventListener('click', (event) => {
-
 
         if (event.target == event.currentTarget) return
 
-
-        if (!operator){
                     
-            if(!firstNum){
-                firstNum = event.target.id;
-            }
-            else if(firstNum){
-                firstNum += event.target.id;
-            }
-        }else{
-            if(!secondNum){
-                secondNum = event.target.id;
-            }
-            else if(secondNum){
-                secondNum += event.target.id;
-            }
+        if(!firstNum){
+            firstNum = event.target.id;
+        }
+        else if(firstNum){
+            firstNum += event.target.id;
 
         }
 
@@ -73,53 +62,66 @@ function getNum(){
             toDisplay += event.target.id;
         }
 
-        display.placeholder = toDisplay;
+        console.log(firstNum);
+        
+        inputDisplay.placeholder = toDisplay;
     
     })
 
-    // toDisplay += firstNum;
-    // display.placeholder = toDisplay
 }
 
-//add number to the second variable if there are still no operator
+// function getOperator(){
+//     let operatorArea = document.querySelector('#operators');
 
-function getOperator(){
-    let operatorArea = document.querySelector('#operators');
+//     operatorArea.addEventListener('click', (event) => {
+//         if (event.target == event.currentTarget) return
+//         let clickedOperator = event.target.id;
+        
+//         switch(clickedOperator){
+//             case 'plus':
+//                 operator = '+';
+//                 break;
+//             case 'minus':
+//                 operator = '-';
+//                 break;
+//             case 'multiply':
+//                 operator = '*';
+//                 break;
+//             case 'divide':
+//                 operator = '/';
+//                 break;
+//             case 'equals':
+//                 result = operate(firstNum,secondNum,operator);
+//                 toDisplay = result;
+//                 break;
+//             case 'clear':
+//                 console.log('work');
+//                 firstNum = null;
+//                 secondNum = null;
+//                 operator = null;
+//                 toDisplay = '';
 
-    operatorArea.addEventListener('click', (event) => {
-        if (event.target == event.currentTarget) return
-        let clickedOperator = event.target.id;
+//                 break;
+//         }
 
-        switch(clickedOperator){
-            case 'plus':
-                operator = '+';
-                break;
-            case 'minus':
-                operator = '-';
-                break;
-            case 'multiply':
-                operator = '*';
-                break;
-            case 'divide':
-                operator = '/';
-                break;
-            case 'clear':
-                break;
-            case 'equals':
-                result = operate(firstNum,secondNum,operator);
-                toDisplay = result
-        }
-
-        if(event.target.id != 'equals') toDisplay+= operator;  
-        display.placeholder = toDisplay;
-    })
-}
+//         if(clickedOperator != 'equals' && clickedOperator != 'clear') toDisplay+= operator;   
+      
+//         display.placeholder = toDisplay;
+//     })
+// }
 //operator function: what should it include?
 //operator that change the variable and add it to the screen;
 //if = is clicked use the function needed
 
 
-
-getOperator();
+//run calcu
+// getOperator();
 getNum();
 
+
+
+
+
+//initially run in first display
+//if operator is selected
+//pass seonc display as argument.
