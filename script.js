@@ -89,9 +89,6 @@ function getOperator(){
     operatorArea.addEventListener('click', (event) => {
         if (event.target == event.currentTarget) return
         let clickedOperator = event.target.id;
-
-  
-
         switch(clickedOperator){
             case 'plus':
                 operator = '+';
@@ -110,9 +107,13 @@ function getOperator(){
                 toDisplay = result;
                 firstNum = result;
                 secondNum = 0;
+                operator ='';
                 break;
             case 'clear':
-                
+                toDisplay = '';
+                firstNum = 0;
+                secondNum = 0;
+                operator = ''
                 break;
         }
 
