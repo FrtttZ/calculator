@@ -44,31 +44,37 @@ function operate(num1, num2, op){
 function getNum(){
     let numbers = document.querySelector('#number');
     numbers.addEventListener('click', (event) => {
-      
+    let numberClicked = event.target.id;
     if (event.target == event.currentTarget) return
+    if (result && !operator){
+        result = '';
+        secondNum = '';
+        firstNum = '';
+    }
+
 
     if (!toDisplay) {
-        toDisplay = event.target.id
+        toDisplay = numberClicked;
     }else{
-        toDisplay += event.target.id;
+        toDisplay += numberClicked;
     }
 
     if (!operator){
                 
         if(!firstNum){
-            firstNum = event.target.id;
+            firstNum = numberClicked;
         }
         else if(firstNum){
-            firstNum += event.target.id;
+            firstNum += numberClicked;
         }
 
         firstNumDisplay.placeholder = toDisplay;
     }else{
         if(!secondNum){
-            secondNum = event.target.id;
+            secondNum = numberClicked;
         }
         else if(secondNum){
-            secondNum += event.target.id;
+            secondNum += numberClicked;
         }
         secondNumDisplay.placeholder = toDisplay;
 
@@ -85,6 +91,8 @@ function getOperator(){
     operatorArea.addEventListener('click', (event) => {
         if (event.target == event.currentTarget) return
         let clickedOperator = event.target.id;
+
+        
         
         switch(clickedOperator){
             case 'plus':
