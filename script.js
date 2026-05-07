@@ -5,7 +5,7 @@ let firstNum = '';
 let secondNum = '';
 let operator = '';
 let toDisplay = '';
-let result = ''
+let result = '';
 const hasOperator = /[-/*+]/
 
 
@@ -29,14 +29,17 @@ function operate(num1, num2, op){
 
     num1 = parseFloat(num1);
     num2 = parseFloat(num2);
-    
+
+    let result;
     switch(op){
-        case '+': return add(num1, num2); break;
-        case '-': return subtract(num1, num2); break;
-        case '*': return multiply(num1, num2); break;
-        case '/': return divide(num1, num2); break;
-        default: return op;
+        case '+': result = add(num1, num2); break;
+        case '-': result = subtract(num1, num2); break;
+        case '*': result = multiply(num1, num2); break;
+        case '/': result = divide(num1, num2); break;
+        default: result = op;
     }
+
+    return `${Math.round(result * 100) / 100}`
 }
 
 function getNum(){
@@ -93,10 +96,8 @@ function resetAfterCalculation(){
 }
 
 function updateDisplay(){
-    
-
     if (!result){
-        toDisplay = `${firstNum}${operator}${secondNum}${result}`
+        toDisplay = `${firstNum}${operator}${secondNum}`
     }
     else{
         toDisplay = `${result}`;
@@ -114,15 +115,14 @@ function getOperator(){
         if (event.target == event.currentTarget) return
         let clickedOperator = event.target.id;
   
-
-
-
-
         if((operator && secondNum ) || clickedOperator == 'equals'){
-            result = operate(firstNum, secondNum, operator);
-            tempResult = result
-            updateDisplay();
+            result = operate(firstNum,secondNum,operator);
+            toDisplay = result
+            display.placeholder = toDisplay;
+            tempResult  = result;
+            // updateDisplay();
             resetAfterCalculation();
+            if(clickedOperator == 'equals') return;
         }
 
 
@@ -150,16 +150,8 @@ function getOperator(){
                 updateDisplay();
                 break;
         }
-
-
-        if(hasOperator.test(toDisplay)){
-            toDisplay = toDisplay.replace(hasOperator, operator)
-        }else{
-            toDisplay += operator;
-        }
-       
-    
-        display.placeholder = toDisplay;
+        
+        updateDisplay();
     })
 
 }
