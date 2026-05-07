@@ -43,6 +43,40 @@ function operate(num1, num2, op){
 
     return `${Math.round(result * 100) / 100}`
 }
+function resetAfterCalculation(){
+    firstNum = '';
+    secondNum = '';
+    operator = '';
+    result = ''     
+    hasDecimal = false;
+
+}
+
+function updateDisplay(){
+    if (!result){
+        toDisplay = `${firstNum}${operator}${secondNum}`
+    }
+    else{
+        toDisplay = `${result}`;
+    }
+    
+    display.placeholder = toDisplay;
+}
+
+function useBackspace(){
+    if(!operator){
+        firstNum = firstNum.slice(0, secondNum.length-1);
+    }else if(operator && secondNum){
+        secondNum = secondNum.slice(0, secondNum.length-1);
+    }else{
+        operator = '';
+    }
+
+    updateDisplay();
+
+}
+
+
 
 function getNum(){
     let numbers = document.querySelector('#number');
@@ -92,25 +126,8 @@ function getNum(){
     })
     
 }
-function resetAfterCalculation(){
-    firstNum = '';
-    secondNum = '';
-    operator = '';
-    result = ''     
-    hasDecimal = false;
 
-}
 
-function updateDisplay(){
-    if (!result){
-        toDisplay = `${firstNum}${operator}${secondNum}`
-    }
-    else{
-        toDisplay = `${result}`;
-    }
-    
-    display.placeholder = toDisplay;
-}
 
 
 
@@ -167,18 +184,6 @@ function getOperator(){
 
 }
 
-function useBackspace(){
-    if(!operator){
-        firstNum = firstNum.slice(0, secondNum.length-1);
-    }else if(operator && secondNum){
-        secondNum = secondNum.slice(0, secondNum.length-1);
-    }else{
-        operator = '';
-    }
-
-    updateDisplay();
-
-}
 
 
 getOperator();
