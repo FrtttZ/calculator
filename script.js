@@ -91,43 +91,11 @@ function getNum(){
     })
 
 }
-function addDecimal(){
 
-    let decimal = document.getElementById('.');
-    let canDecimal = true;
-
-
-    if (numberClicked == '.' || canDecimal){
-        event.target.disabled = true;
-        canDecimal = false;
-    }
-
-
-    //OTHER
-    //if decimal is clicked
-    //disble it
-    // if may operator na
-    //re enable it
-
-
-    //if decimal is clicked
-    //add decimal and disable it
-    //if an operator is added
-    // re enable decimal adding
-    //check if num variable has a decimal
-    //disable if it has
-
-    if(!operator){
-        decimal.setAttribute('disabled', 'true')
-    }
-}
-//reset num
-// if nu1m is empty result += second num
 function resetAfterCalculation(){
     firstNum = '';
     secondNum = '';
     operator = '';
-    // toDisplay = '';
     result = ''     
     hasDecimal = false;
 
