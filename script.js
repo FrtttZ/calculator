@@ -167,12 +167,7 @@ function getOperator(){
 
 }
 
-getOperator();
-getNum();
-
 function useBackspace(){
-    console.log('s');
-    
     if(!operator){
         firstNum = firstNum.slice(0, secondNum.length-1);
     }else if(operator && secondNum){
@@ -186,8 +181,5 @@ function useBackspace(){
 }
 
 
-
-a = 'abcd';
-a = a.slice(0, a.length-1)
-
-console.log(a);
+getOperator();
+getNum();
