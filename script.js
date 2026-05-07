@@ -5,7 +5,7 @@ let firstNum = '';
 let secondNum = '';
 let operator = '';
 let toDisplay = '';
-let result = null
+let result = ''
 
 
 function add(num1, num2){
@@ -41,17 +41,20 @@ function operate(num1, num2, op){
 function getNum(){
     let numbers = document.querySelector('#number');
     numbers.addEventListener('click', (event) => {
+
         let numberClicked = event.target.id;
         if (event.target == event.currentTarget) return
 
         if (!toDisplay) {
             toDisplay = numberClicked;
-        }else{
+        }
+    
+        else{
             toDisplay += numberClicked;
         }
+  
 
 
-        //assign clicked number to firsNum if no operator
         if (!operator){
             
             if(!firstNum){
@@ -71,7 +74,8 @@ function getNum(){
                 secondNum += numberClicked;
             }
         }
-         display.placeholder = toDisplay;        
+        updateDisplay();
+                
     
     })
 
@@ -79,13 +83,28 @@ function getNum(){
 //reset num
 // if nu1m is empty result += second num
 function resetAfterCalculation(){
-   firstNum = '';
+    firstNum = '';
     secondNum = '';
     operator = '';
     // toDisplay = '';
-    // result = ''  
+    result = ''     
 
 }
+
+function updateDisplay(){
+    
+
+    if (!result){
+        toDisplay = `${firstNum}${operator}${secondNum}${result}`
+    }
+    else{
+        toDisplay = result;
+    }
+    
+    display.placeholder = toDisplay;
+}
+
+
 
 function getOperator(){
     let operatorArea = document.querySelector('#operators');
@@ -95,22 +114,25 @@ function getOperator(){
         let clickedOperator = event.target.id;
   
 
-        // if(clickedOperator == 'equals' && (!firstNum || !secondNum)) return
-        if((operator && secondNum ) || clickedOperator == 'equals'){
-            result = operate(firstNum,secondNum,operator);
-            toDisplay = Math.round(result * 100) / 100
-            display.placeholder = toDisplay;
-            resetAfterCalculation();
 
+
+
+        if((operator && secondNum ) || clickedOperator == 'equals'){
+            result = operate(firstNum, secondNum, operator);
+            tempResult = result
+            updateDisplay();
+            resetAfterCalculation();
         }
 
         if(!firstNum && clickedOperator != 'equals'){
-            firstNum = result;
+            console.log('c');
+
+            console.log(firstNum);
+            firstNum = tempResult;
+            console.log(firstNum);
         }
 
-        
 
-        // if (!firstNum)
         switch(clickedOperator){
             case 'plus':
                 operator = '+';
@@ -126,9 +148,7 @@ function getOperator(){
                 break;
             case 'clear':
                 resetAfterCalculation();
-                display.placeholder ='';
-                display.placeholder = '';
-
+                updateDisplay();
                 break;
         }
         toDisplay += operator;
