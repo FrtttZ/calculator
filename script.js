@@ -1,6 +1,5 @@
-let firstNumDisplay = document.querySelector('#firstNum');
-const operatorDisplay = document.querySelector('#operator');
-const secondNumDisplay = document.querySelector('#secondNum');
+let display = document.querySelector('#display');
+
 
 let firstNum = '';
 let secondNum = '';
@@ -45,30 +44,25 @@ function getNum(){
         let numberClicked = event.target.id;
         if (event.target == event.currentTarget) return
 
-
-
         if (!toDisplay) {
             toDisplay = numberClicked;
         }else{
             toDisplay += numberClicked;
-            
         }
 
+
+        //assign clicked number to firsNum if no operator
         if (!operator){
             
             if(!firstNum){
                 firstNum = numberClicked;
-                console.log('that');
                 
             }
             else if(firstNum){
-                //
                 firstNum += numberClicked;
-                console.log('this');
                 
             }
 
-            firstNumDisplay.placeholder = toDisplay;
         }else{
             if(!secondNum){
                 secondNum = numberClicked;
@@ -76,10 +70,8 @@ function getNum(){
             else if(secondNum){
                 secondNum += numberClicked;
             }
-            secondNumDisplay.placeholder = toDisplay;
-
         }
-        
+         display.placeholder = toDisplay;        
     
     })
 
@@ -90,10 +82,9 @@ function resetAfterCalculation(){
    firstNum = '';
     secondNum = '';
     operator = '';
-    toDisplay = '';
+    // toDisplay = '';
     // result = ''  
-    operatorDisplay.placeholder = operator;
-    secondNumDisplay.placeholder = secondNum;
+
 }
 
 function getOperator(){
@@ -108,14 +99,13 @@ function getOperator(){
         if((operator && secondNum ) || clickedOperator == 'equals'){
             result = operate(firstNum,secondNum,operator);
             toDisplay = Math.round(result * 100) / 100
-            firstNumDisplay.placeholder = toDisplay;
+            display.placeholder = toDisplay;
             resetAfterCalculation();
 
         }
 
         if(!firstNum && clickedOperator != 'equals'){
             firstNum = result;
-            
         }
 
         
@@ -136,13 +126,13 @@ function getOperator(){
                 break;
             case 'clear':
                 resetAfterCalculation();
-                firstNumDisplay.placeholder ='';
-                secondNumDisplay.placeholder = '';
+                display.placeholder ='';
+                display.placeholder = '';
 
                 break;
         }
-        toDisplay = '';
-        operatorDisplay.placeholder = operator;
+        toDisplay += operator;
+        display.placeholder = toDisplay;
 
     })
 
