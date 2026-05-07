@@ -42,51 +42,56 @@ function operate(num1, num2, op){
 function getNum(){
     let numbers = document.querySelector('#number');
     numbers.addEventListener('click', (event) => {
-    let numberClicked = event.target.id;
-    if (event.target == event.currentTarget) return
-    if (!operator){
-
-        firstNum = '';  
-    }
+        let numberClicked = event.target.id;
+        if (event.target == event.currentTarget) return
 
 
-    if (!toDisplay) {
-        toDisplay = numberClicked;
-    }else{
-        toDisplay += numberClicked;
-    }
 
-    if (!operator){
+        if (!toDisplay) {
+            toDisplay = numberClicked;
+        }else{
+            toDisplay += numberClicked;
+            
+        }
+
+        if (!operator){
+            
+            if(!firstNum){
+                firstNum = numberClicked;
+                console.log('that');
                 
-        if(!firstNum){
-            firstNum = numberClicked;
-        }
-        else if(firstNum){
-            firstNum += numberClicked;
-        }
+            }
+            else if(firstNum){
+                //
+                firstNum += numberClicked;
+                console.log('this');
+                
+            }
 
-        firstNumDisplay.placeholder = toDisplay;
-    }else{
-        if(!secondNum){
-            secondNum = numberClicked;
-        }
-        else if(secondNum){
-            secondNum += numberClicked;
-        }
-        secondNumDisplay.placeholder = toDisplay;
+            firstNumDisplay.placeholder = toDisplay;
+        }else{
+            if(!secondNum){
+                secondNum = numberClicked;
+            }
+            else if(secondNum){
+                secondNum += numberClicked;
+            }
+            secondNumDisplay.placeholder = toDisplay;
 
-    }
-    
+        }
+        
     
     })
 
 }
-function resetAfterCalculation(resetFirstNum=false){
-    if (resetFirstNum) firstNum = '';
+//reset num
+// if nu1m is empty result += second num
+function resetAfterCalculation(){
+   firstNum = '';
     secondNum = '';
     operator = '';
     toDisplay = '';
-    result = ''
+    // result = ''  
     operatorDisplay.placeholder = operator;
     secondNumDisplay.placeholder = secondNum;
 }
@@ -99,17 +104,23 @@ function getOperator(){
         let clickedOperator = event.target.id;
   
 
-        if(clickedOperator == 'equals' && (!firstNum || !secondNum)) return
+        // if(clickedOperator == 'equals' && (!firstNum || !secondNum)) return
         if((operator && secondNum ) || clickedOperator == 'equals'){
             result = operate(firstNum,secondNum,operator);
             toDisplay = Math.round(result * 100) / 100
-            firstNum = result;
             firstNumDisplay.placeholder = toDisplay;
-            
             resetAfterCalculation();
 
         }
+
+        if(!firstNum && clickedOperator != 'equals'){
+            firstNum = result;
+            
+        }
+
         
+
+        // if (!firstNum)
         switch(clickedOperator){
             case 'plus':
                 operator = '+';
@@ -124,7 +135,7 @@ function getOperator(){
                 operator = '/';
                 break;
             case 'clear':
-                resetAfterCalculation(true);
+                resetAfterCalculation();
                 firstNumDisplay.placeholder ='';
                 secondNumDisplay.placeholder = '';
 
