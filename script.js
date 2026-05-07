@@ -1,5 +1,5 @@
 let display = document.querySelector('#display');
-
+let decimal = document.getElementById('.')
 
 let firstNum = '';
 let secondNum = '';
@@ -7,6 +7,7 @@ let operator = '';
 let toDisplay = '';
 let result = '';
 const hasOperator = /[-/*+]/
+let hasDecimal = false;
 
 
 function add(num1, num2){
@@ -44,20 +45,23 @@ function operate(num1, num2, op){
 
 function getNum(){
     let numbers = document.querySelector('#number');
+
     numbers.addEventListener('click', (event) => {
 
         let numberClicked = event.target.id;
         if (event.target == event.currentTarget) return
+        
+        if(numberClicked == '.') hasDecimal = true;
+        decimal.disabled = hasDecimal;
+
+
 
         if (!toDisplay) {
             toDisplay = numberClicked;
-        }
-    
-        else{
+        }else{
             toDisplay += numberClicked;
         }
   
-
 
         if (!operator){
             
@@ -78,11 +82,44 @@ function getNum(){
                 secondNum += numberClicked;
             }
         }
+
+        // addDecimal();
         updateDisplay();
+
                 
     
     })
 
+}
+function addDecimal(){
+
+    let decimal = document.getElementById('.');
+    let canDecimal = true;
+
+
+    if (numberClicked == '.' || canDecimal){
+        event.target.disabled = true;
+        canDecimal = false;
+    }
+
+
+    //OTHER
+    //if decimal is clicked
+    //disble it
+    // if may operator na
+    //re enable it
+
+
+    //if decimal is clicked
+    //add decimal and disable it
+    //if an operator is added
+    // re enable decimal adding
+    //check if num variable has a decimal
+    //disable if it has
+
+    if(!operator){
+        decimal.setAttribute('disabled', 'true')
+    }
 }
 //reset num
 // if nu1m is empty result += second num
@@ -92,6 +129,7 @@ function resetAfterCalculation(){
     operator = '';
     // toDisplay = '';
     result = ''     
+    hasDecimal = false;
 
 }
 
@@ -114,7 +152,10 @@ function getOperator(){
     operatorArea.addEventListener('click', (event) => {
         if (event.target == event.currentTarget) return
         let clickedOperator = event.target.id;
-  
+
+        hasDecimal = false;
+        decimal.disabled = hasDecimal
+
         if((operator && secondNum ) || clickedOperator == 'equals'){
             result = operate(firstNum,secondNum,operator);
             toDisplay = result
@@ -150,7 +191,6 @@ function getOperator(){
                 updateDisplay();
                 break;
         }
-        
         updateDisplay();
     })
 
