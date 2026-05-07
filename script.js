@@ -6,6 +6,7 @@ let secondNum = '';
 let operator = '';
 let toDisplay = '';
 let result = ''
+const hasOperator = /[-/*+]/
 
 
 function add(num1, num2){
@@ -98,7 +99,7 @@ function updateDisplay(){
         toDisplay = `${firstNum}${operator}${secondNum}${result}`
     }
     else{
-        toDisplay = result;
+        toDisplay = `${result}`;
     }
     
     display.placeholder = toDisplay;
@@ -124,12 +125,10 @@ function getOperator(){
             resetAfterCalculation();
         }
 
-        if(!firstNum && clickedOperator != 'equals'){
-            console.log('c');
 
-            console.log(firstNum);
+        //assign result to firstNum if an operator is clicked after calculation
+        if(!firstNum && clickedOperator != 'equals'){
             firstNum = tempResult;
-            console.log(firstNum);
         }
 
 
@@ -151,9 +150,16 @@ function getOperator(){
                 updateDisplay();
                 break;
         }
-        toDisplay += operator;
-        display.placeholder = toDisplay;
 
+
+        if(hasOperator.test(toDisplay)){
+            toDisplay = toDisplay.replace(hasOperator, operator)
+        }else{
+            toDisplay += operator;
+        }
+       
+    
+        display.placeholder = toDisplay;
     })
 
 }
