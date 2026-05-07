@@ -11,4 +11,17 @@ body{
 }
 
 
+.container{
+    width: 350px;
+    border: solid black 1px;
+    border-radius: 10px;
+    background-color: rgb(223, 223, 221);
+    margin-top: 10px;
+
+
+
+
+}
+
+
 
