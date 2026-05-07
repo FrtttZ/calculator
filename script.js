@@ -1,5 +1,6 @@
 let display = document.querySelector('#display');
 let decimal = document.getElementById('.')
+let backspace = document.getElementById('backspace')
 
 let firstNum = '';
 let secondNum = '';
@@ -89,9 +90,8 @@ function getNum(){
                 
     
     })
-
+    
 }
-
 function resetAfterCalculation(){
     firstNum = '';
     secondNum = '';
@@ -124,12 +124,15 @@ function getOperator(){
         hasDecimal = false;
         decimal.disabled = hasDecimal
 
+        if(clickedOperator =='backspace') {
+            useBackspace(); return;
+        }
+
         if((operator && secondNum ) || clickedOperator == 'equals'){
             result = operate(firstNum,secondNum,operator);
             toDisplay = result
             display.placeholder = toDisplay;
             tempResult  = result;
-            // updateDisplay();
             resetAfterCalculation();
             if(clickedOperator == 'equals') return;
         }
@@ -166,3 +169,25 @@ function getOperator(){
 
 getOperator();
 getNum();
+
+function useBackspace(){
+    console.log('s');
+    
+    if(!operator){
+        firstNum = firstNum.slice(0, secondNum.length-1);
+    }else if(operator && secondNum){
+        secondNum = secondNum.slice(0, secondNum.length-1);
+    }else{
+        operator = '';
+    }
+
+    updateDisplay();
+
+}
+
+
+
+a = 'abcd';
+a = a.slice(0, a.length-1)
+
+console.log(a);
