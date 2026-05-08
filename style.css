@@ -69,6 +69,11 @@ button{
 }
 
 
+#number button:disabled{
+    background-color:var(--button-hover-color);
+}
+
+
 
 .allButtons{
     display: flex;
@@ -112,7 +117,6 @@ button{
 #operators :nth-last-child(-n+2){
     background-color: var(--danger-button);
 }
-
 
 
 
