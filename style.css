@@ -35,7 +35,7 @@ body{
 .container{
     background-color: var(--container-color);
 
-    width: 400px;
+    width: 600px;
     border: solid black 1px;
     border-radius: 10px;
     margin-top: 10px;
@@ -51,25 +51,23 @@ body{
     border-radius: 8px;
     margin-bottom: 12px;;
     width: 100%;
-    padding: 20px;
+    padding:16px;
     text-align: end;
+
+    font-size: 48px;
+    color: var(--display-text-color);
+    
 
 }
 
 
 button{
-    padding: 18px;
-
+    padding: 24px;
+    font-size: 24px;
     border-radius: 12px;
     border:0px;
 }
 
-
-/* display */
-input::placeholder{
-    font-size: 24px;
-    color: var(--display-text-color);
-}
 
 
 .allButtons{
@@ -82,16 +80,16 @@ input::placeholder{
     background-color: var(--number-button-color);
     color: var(--number-text-color);
     margin-bottom:5px ;
+    margin-right: 5px;
     width: 30%;
+
 }
 
 #number button:hover, #operators button:hover{
     background-color: var(--button-hover-color);
 }
-
 #operators{
     
-    gap:2px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;    
