@@ -56,6 +56,15 @@ body{
 
 }
 
+
+button{
+    padding: 18px;
+
+    border-radius: 12px;
+    border:0px;
+}
+
+
 /* display */
 input::placeholder{
     font-size: 24px;
@@ -72,7 +81,7 @@ input::placeholder{
 #number button{
     background-color: var(--number-button-color);
     color: var(--number-text-color);
-    margin-bottom:2px ;
+    margin-bottom:5px ;
     width: 30%;
 }
 
@@ -82,7 +91,7 @@ input::placeholder{
 
 #operators{
     
-
+    gap:2px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;    
@@ -94,7 +103,7 @@ input::placeholder{
     background-color: var(--operator-button-color);
     color: var(--operator-text-color);
 
-    margin-bottom: 2px;;
+    margin-bottom: 5px;;
     width: 49%;
 }
 
@@ -107,9 +116,7 @@ input::placeholder{
 }
 
 
-button{
-    padding: 18px;
-}
+
 
 .watermark{
     color: gray;
