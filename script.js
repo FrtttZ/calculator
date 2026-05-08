@@ -145,15 +145,22 @@ function getOperator(){
         }
 
         if((operator && clickedOperator != 'clear') || clickedOperator == 'equals'){
-            if(!secondNum) return;
+            if(!secondNum){
+                operator = clickedOperator;
+                updateDisplay();
+            }else{
+                result = operate(firstNum,secondNum,operator);
+                toDisplay = result
+                display.value = toDisplay;
+                tempResult  = result;
+                resetAfterCalculation();
+                if(clickedOperator == 'equals') return;
+            }
 
-            result = operate(firstNum,secondNum,operator);
-            toDisplay = result
-            display.value = toDisplay;
-            tempResult  = result;
-            resetAfterCalculation();
-            if(clickedOperator == 'equals') return;
         }
+
+
+        //If operator is clicked
 
 
         //assign result to firstNum if an operator is clicked after calculation
