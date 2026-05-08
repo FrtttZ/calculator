@@ -1,9 +1,23 @@
+:root{
+    --body-color:#E8EFEA;
+    --container-color:#A3B18A;
+    --display-color:#344E41;
+    --display-text-color: #F5F7F2;
+    --number-button-color: #DADFCF;
+    --number-text-color:#2F3E34;
+    --operator-button-color: #6B8F71;
+    --operator-text-color:#FFFFFF;
+    --danger-button:#C97C5D;
+    --button-hover-color:#8FA17A;
+}
+
 *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     
 }
+
 
 body{
     display: flex;
@@ -37,7 +51,6 @@ body{
     flex-direction: row;
     
 }
-
 
 #number button{
     margin-bottom:2px ;
