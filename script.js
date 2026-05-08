@@ -60,7 +60,7 @@ function updateDisplay(){
         toDisplay = `${result}`;
     }
     
-    display.placeholder = toDisplay;
+    display.value = toDisplay;
 }
 
 function useBackspace(){
@@ -150,7 +150,7 @@ function getOperator(){
 
             result = operate(firstNum,secondNum,operator);
             toDisplay = result
-            display.placeholder = toDisplay;
+            display.value = toDisplay;
             tempResult  = result;
             resetAfterCalculation();
             if(clickedOperator == 'equals') return;
