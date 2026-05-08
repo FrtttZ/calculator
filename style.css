@@ -1,18 +1,19 @@
 :root{
-    --body-color:#E8EFEA;
-    --container-color:#A3B18A;
-    
-    --display-color:#344E41;
-    --display-text-color: #F5F7F2;
+    --body-color:#EEF5F1;
+    --container-color:#B7CDBD;
 
-    --number-button-color: #DADFCF;
-    --number-text-color:#2F3E34;
-    
-    --operator-button-color: #6B8F71;
+    --display-color:#31443A;
+    --display-text-color:#FFF8FB;
+
+    --number-button-color:#F6EDEF;
+    --number-text-color:#2E3B34;
+
+    --operator-button-color:#8EB8A6;
     --operator-text-color:#FFFFFF;
-    
-    --danger-button:#C97C5D;
-    --button-hover-color:#8FA17A;
+
+    --danger-button:#D98CA3;
+    --button-hover-color:#7FA895;
+
 }
 
 *{
@@ -59,8 +60,6 @@ input::placeholder{
 }
 
 
-
-
 .allButtons{
     display: flex;
     flex-direction: row;
@@ -72,6 +71,10 @@ input::placeholder{
     color: var(--number-text-color);
     margin-bottom:2px ;
     width: 30%;
+}
+
+#number button:hover, #operators button:hover{
+    background-color: var(--button-hover-color);
 }
 
 #operators{
@@ -103,6 +106,4 @@ input::placeholder{
 
 button{
     padding: 18px;
-
 }
-
