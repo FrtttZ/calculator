@@ -145,8 +145,8 @@ function getOperator(){
             useBackspace(); return;
         }
 
-        if((operator) || clickedOperator == 'equals'){
-            if(!secondNum) return
+        if((operator && clickedOperator != 'clear') || clickedOperator == 'equals'){
+            if(!secondNum) return;
 
             result = operate(firstNum,secondNum,operator);
             toDisplay = result
@@ -162,6 +162,8 @@ function getOperator(){
             firstNum = tempResult;
         }
 
+        console.log(clickedOperator);
+        
 
         switch(clickedOperator){
             case 'plus':
