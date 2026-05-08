@@ -145,7 +145,9 @@ function getOperator(){
             useBackspace(); return;
         }
 
-        if((operator && secondNum ) || clickedOperator == 'equals'){
+        if((operator) || clickedOperator == 'equals'){
+            if(!secondNum) return
+
             result = operate(firstNum,secondNum,operator);
             toDisplay = result
             display.placeholder = toDisplay;
