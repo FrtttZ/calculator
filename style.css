@@ -22,7 +22,6 @@
     
 }
 
-
 body{
     background-color: var(--body-color);
 
@@ -48,13 +47,19 @@ body{
 
 .display{
     background-color: var(--display-color);
-
     border-radius: 8px;
     margin-bottom: 12px;;
     width: 100%;
     padding: 20px;
-    
 }
+
+/* display */
+input::placeholder{
+    color: var(--display-text-color);
+}
+
+
+
 
 .allButtons{
     display: flex;
@@ -64,7 +69,7 @@ body{
 
 #number button{
     background-color: var(--number-button-color);
-
+    color: var(--number-text-color);
     margin-bottom:2px ;
     width: 30%;
 }
@@ -81,8 +86,8 @@ body{
 
 #operators button{
     background-color: var(--operator-button-color);
+    color: var(--operator-text-color);
 
-    
     margin-bottom: 2px;;
     width: 49%;
 }
@@ -91,6 +96,9 @@ body{
     width: 100%;
 }
 
+#operators :nth-last-child(-n+2){
+    background-color: var(--danger-button);
+}
 
 
 button{
