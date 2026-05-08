@@ -52,10 +52,13 @@ body{
     margin-bottom: 12px;;
     width: 100%;
     padding: 20px;
+    text-align: end;
+
 }
 
 /* display */
 input::placeholder{
+    font-size: 24px;
     color: var(--display-text-color);
 }
 
