@@ -1,12 +1,16 @@
 :root{
     --body-color:#E8EFEA;
     --container-color:#A3B18A;
+    
     --display-color:#344E41;
     --display-text-color: #F5F7F2;
+
     --number-button-color: #DADFCF;
     --number-text-color:#2F3E34;
+    
     --operator-button-color: #6B8F71;
     --operator-text-color:#FFFFFF;
+    
     --danger-button:#C97C5D;
     --button-hover-color:#8FA17A;
 }
@@ -20,16 +24,20 @@
 
 
 body{
+    background-color: var(--body-color);
+
+
     display: flex;
     justify-content: center;
 }
 
 
 .container{
+    background-color: var(--container-color);
+
     width: 400px;
     border: solid black 1px;
     border-radius: 10px;
-    background-color: rgb(223, 223, 221);
     margin-top: 10px;
     
     display: flex;
@@ -39,6 +47,8 @@ body{
 }
 
 .display{
+    background-color: var(--display-color);
+
     border-radius: 8px;
     margin-bottom: 12px;;
     width: 100%;
@@ -53,11 +63,15 @@ body{
 }
 
 #number button{
+    background-color: var(--number-button-color);
+
     margin-bottom:2px ;
     width: 30%;
 }
 
 #operators{
+    
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;    
@@ -66,6 +80,9 @@ body{
 
 
 #operators button{
+    background-color: var(--operator-button-color);
+
+    
     margin-bottom: 2px;;
     width: 49%;
 }
