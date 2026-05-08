@@ -90,14 +90,6 @@ function getNum(){
         decimal.disabled = hasDecimal;
 
 
-
-        if (!toDisplay) {
-            toDisplay = numberClicked;
-        }else{
-            toDisplay += numberClicked;
-        }
-  
-
         if (!operator){
             
             if(!firstNum){
@@ -125,10 +117,6 @@ function getNum(){
     
 }
 
-
-
-
-
 function getOperator(){
     let operatorArea = document.querySelector('#operators');
 
@@ -144,11 +132,18 @@ function getOperator(){
             useBackspace(); return;
         }
 
+
         if((operator && clickedOperator != 'clear') || clickedOperator == 'equals'){
-            if(!secondNum){
+
+            //Assign new operator
+            if(!secondNum && clickedOperator != 'equals'){
                 operator = clickedOperator;
                 updateDisplay();
+                return;
             }else{
+
+                //Calculate after clicking equals or operator
+                if(!secondNum) return;
                 result = operate(firstNum,secondNum,operator);
                 toDisplay = result
                 display.value = toDisplay;
@@ -158,10 +153,6 @@ function getOperator(){
             }
 
         }
-
-
-        //If operator is clicked
-
 
         //assign result to firstNum if an operator is clicked after calculation
         if(!firstNum && clickedOperator != 'equals'){
