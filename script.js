@@ -117,8 +117,6 @@ function getNum(){
                 secondNum += numberClicked;
             }
         }
-
-        // addDecimal();
         updateDisplay();
 
                 
@@ -134,6 +132,7 @@ function getNum(){
 function getOperator(){
     let operatorArea = document.querySelector('#operators');
 
+    let tempResult = null
     operatorArea.addEventListener('click', (event) => {
         if (event.target == event.currentTarget) return
         let clickedOperator = event.target.id;
@@ -159,11 +158,11 @@ function getOperator(){
 
         //assign result to firstNum if an operator is clicked after calculation
         if(!firstNum && clickedOperator != 'equals'){
-            firstNum = tempResult;
+
+            if(tempResult) firstNum = tempResult;
+            else return;
         }
 
-        console.log(clickedOperator);
-        
 
         switch(clickedOperator){
             case 'plus':
