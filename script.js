@@ -54,7 +54,7 @@ function resetAfterCalculation(){
 
 function updateDisplay(){
     if (!result){
-        toDisplay = `${firstNum}${operator}${secondNum}`
+        toDisplay = `${firstNum} ${operator} ${secondNum}`
     }
     else{
         toDisplay = `${result}`;
